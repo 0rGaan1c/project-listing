@@ -8,12 +8,14 @@ const processCategories = async (categoryString) => {
   const categoryDocuments = [];
 
   for (const category of categories) {
-    const existingCategory = await Category.findOne({ category });
+    const existingCategory = await Category.findOne({
+      category: category.trim(),
+    });
 
     if (existingCategory) {
       categoryDocuments.push(existingCategory._id);
     } else {
-      const newCategory = await Category.create({ category });
+      const newCategory = await Category.create({ category: category.trim() });
       categoryDocuments.push(newCategory._id);
     }
   }
