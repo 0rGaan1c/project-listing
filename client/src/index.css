@@ -23,3 +23,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+.blackScreen-overlay {
+  @apply fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-10 bg-[#00000040];
+}

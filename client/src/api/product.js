@@ -20,3 +20,23 @@ export const getCategories = async () => {
     return false;
   }
 };
+
+export const createProduct = async (formData) => {
+  try {
+    const { data } = await axios.post(`${URL}/product`, formData);
+    return data;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const updateProduct = async (formData) => {
+  try {
+    const { data } = await axios.patch(`${URL}/product`, formData);
+    return data;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};

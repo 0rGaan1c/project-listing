@@ -1,21 +1,19 @@
 import React from "react";
 import { useState } from "react";
-import { login } from "../../api/auth";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
-import { toast } from "react-hot-toast";
 import { useAuth } from "../../hooks/useAuth";
 import LoginModal from "../../components/Modals/LoginModal";
 import SignupModal from "../../components/Modals/SignupModal";
+import ProductModal from "../../components/Modals/ProductModal";
 
-const MenuBox = ({ totalProducts }) => {
+const MenuBox = ({ totalProducts, setSortBy }) => {
   const isLoggedIn = useAuth();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
+  const [isProductModalOpen, setIsProductModalOpen] = useState(false);
 
   const handleClick = () => {
     if (isLoggedIn) {
-      console.log("open add product");
+      setIsProductModalOpen(true);
     } else {
       setIsSignupModalOpen(true);
     }
@@ -23,8 +21,16 @@ const MenuBox = ({ totalProducts }) => {
 
   return (
     <>
+      {isProductModalOpen && (
+        <div className="blackScreen-overlay">
+          <ProductModal
+            setIsProductModalOpen={setIsProductModalOpen}
+            type={"add"}
+          />
+        </div>
+      )}
       {isSignupModalOpen && (
-        <div className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-10 bg-[#00000040] no-scroll">
+        <div className="blackScreen-overlay">
           <SignupModal
             width={"w-11/12"}
             isModal={true}
@@ -34,7 +40,7 @@ const MenuBox = ({ totalProducts }) => {
         </div>
       )}
       {isLoginModalOpen && (
-        <div className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-10 bg-[#00000040] no-scroll">
+        <div className="blackScreen-overlay">
           <LoginModal
             width={"w-11/12"}
             isModal={true}
@@ -45,8 +51,13 @@ const MenuBox = ({ totalProducts }) => {
       )}
       <div className="border-2 border-[#36416a59] rounded-md p-2 mt-8 flex justify-between text-sm items-center">
         <p className="font-medium">{totalProducts} Suggestions</p>
-        <select className="text-[#8B8B8B]">
-          <option value="sortby">Sort By</option>
+        <select
+          className="text-[#8B8B8B]"
+          onChange={(e) => {
+            setSortBy(e.target.value);
+          }}
+        >
+          <option value="">Sort By</option>
           <option value="upvote">Upvote</option>
           <option value="comment">Comment</option>
         </select>

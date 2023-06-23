@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { getCategories } from "../../api/product";
 import { toast } from "react-hot-toast";
+import { ProductContext } from "../../contexts/ProductContext";
 
 const Filter = ({ categoryId, setCategoryId }) => {
   const [categories, setCategories] = useState([]);
+  const { isProductUpdated, setIsProductUpdated } = useContext(ProductContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,9 +15,13 @@ const Filter = ({ categoryId, setCategoryId }) => {
       } else {
         toast.error(result.error || "Something went wrong.");
       }
+      if (isProductUpdated) {
+        setIsProductUpdated(false);
+      }
     };
+
     fetchData();
-  }, []);
+  }, [isProductUpdated, setIsProductUpdated]);
 
   return (
     <div className="mt-4">
