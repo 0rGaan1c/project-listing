@@ -21,9 +21,9 @@ const ModalLayout = ({ children, width, isModal }) => {
         </div>
 
         {isModal && (
-          <div className="hidden lg:block lg:bg-[#36416A] text-white py-10 px-8 lg:col-span-2 lg:h-[75vh]">
-            <p className="text-3xl">Feedback</p>
-            <p className="text-xl mt-4">
+          <div className="hidden lg:block lg:bg-[#36416A] text-white pt-16 px-8 lg:col-span-2 lg:h-[75vh]">
+            <p className="text-4xl">Feedback</p>
+            <p className="text-3xl mt-4">
               Add your
               <br /> product and <br />
               rate other <br />
