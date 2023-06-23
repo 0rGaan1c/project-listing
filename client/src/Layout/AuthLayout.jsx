@@ -18,8 +18,8 @@ const AuthLayout = ({ children }) => {
   return (
     <>
       {!checkingToken && (
-        <div className="h-screen bg-[#36416A] pt-16">
-          <div className="w-10/12 mx-auto">
+        <div className="h-screen bg-[#36416A] pt-16 md:pt-24">
+          <div className="w-10/12 mx-auto md:w-7/12 lg:w-2/4 xl:w-5/12">
             <div className="text-white mb-10">
               <h1 className="text-4xl mb-6">Feedback</h1>
               <p>Add your products and give us your valuable feedback</p>

@@ -5,7 +5,7 @@ import LoginModal from "../../components/Modals/LoginModal";
 const Login = () => {
   return (
     <AuthLayout>
-      <LoginModal width={"w-full"} />
+      <LoginModal width={"w-full"} isModal={false} />
     </AuthLayout>
   );
 };

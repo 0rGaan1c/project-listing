@@ -53,11 +53,11 @@ const Product = ({ product }) => {
           className="bg-[#36416a26] my-3 p-3 rounded-md min-h-36 h-auto"
         >
           <div className="flex gap-2 justify-between w-full">
-            <div className="w-[20%]">
+            <div className="w-[20%] lg:w-fit lg:mr-4">
               <img
                 src={logoUrl}
                 alt={companyName}
-                className="w-12 h-12 object-cover rounded-full"
+                className="w-12 h-12 object-cover rounded-full lg:w-[86px] lg:h-[76px]"
               />
             </div>
             <div className="w-[100%]">
@@ -73,8 +73,8 @@ const Product = ({ product }) => {
                 </div>
                 <Upvote productId={_id} upvotes={upvotes} />
               </div>
-              <div className="mt-2 flex gap-2 justify-between items-center text-sm">
-                <div className="flex flex-wrap gap-1 w-[70%]">
+              <div className="mt-2 flex gap-2 justify-between items-center text-sm lg:justify-start">
+                <div className="flex flex-wrap gap-1 w-[70%] lg:w-[35%]">
                   {categories.map(({ category, _id }) => {
                     return (
                       <div
@@ -94,26 +94,31 @@ const Product = ({ product }) => {
                     setIsCommentOpen(!isCommentOpen);
                   }}
                 >
-                  <img src={Comment1} alt="" />
+                  <div className="lg:flex lg:items-center lg:gap-1 lg:text-[#ABABAB]">
+                    <img src={Comment1} alt="" />
+                    <p className="hidden lg:inline">Comment</p>
+                  </div>
                 </div>
-                {isLoggedIn && (
-                  <button
-                    className="bg-[#36416A] text-white rounded-full w-fit h-fit px-3 py-1"
+                <div className="flex lg:ml-auto lg:gap-8">
+                  {isLoggedIn && (
+                    <button
+                      className="bg-[#36416A] text-white rounded-full w-fit h-fit px-3 py-1 lg:px-5"
+                      onClick={() => {
+                        setIsProductModalOpen(true);
+                      }}
+                    >
+                      Edit
+                    </button>
+                  )}
+                  <div
+                    className="w-14 flex gap-1 items-center cursor-pointer justify-end"
                     onClick={() => {
-                      setIsProductModalOpen(true);
+                      setIsCommentOpen(!isCommentOpen);
                     }}
                   >
-                    Edit
-                  </button>
-                )}
-                <div
-                  className="w-14 grid grid-cols-2 gap-px items-center cursor-pointer"
-                  onClick={() => {
-                    setIsCommentOpen(!isCommentOpen);
-                  }}
-                >
-                  <span className="font-medium">{commentList.length}</span>
-                  <img src={Comment2} alt="" />
+                    <span className="font-medium">{commentList.length}</span>
+                    <img src={Comment2} alt="" className="" />
+                  </div>
                 </div>
               </div>
             </div>

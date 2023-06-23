@@ -49,20 +49,24 @@ const MenuBox = ({ totalProducts, setSortBy }) => {
           />
         </div>
       )}
-      <div className="border-2 border-[#36416a59] rounded-md p-2 mt-8 flex justify-between text-sm items-center">
-        <p className="font-medium">{totalProducts} Suggestions</p>
+      <div className="border-2 border-[#36416a59] rounded-md p-2 mt-8 flex justify-between text-sm items-center lg:py-3">
+        <p className="font-bold lg:text-base">{totalProducts} Suggestions</p>
         <select
-          className="text-[#8B8B8B]"
+          className="text-[#8B8B8B] lg:text-base lg:font-bold lg:text-black"
           onChange={(e) => {
             setSortBy(e.target.value);
           }}
         >
           <option value="">Sort By</option>
-          <option value="upvote">Upvote</option>
-          <option value="comment">Comment</option>
+          <option value="upvote" className="lg:text-black">
+            Upvote
+          </option>
+          <option value="comment" className="lg:text-black">
+            Comment
+          </option>
         </select>
         <button
-          className="rounded-md bg-[#36416A] text-white py-1 px-3"
+          className="rounded-md bg-[#36416A] text-white py-1 px-3 lg:py-2 lg:px-4"
           onClick={handleClick}
         >
           + Add product

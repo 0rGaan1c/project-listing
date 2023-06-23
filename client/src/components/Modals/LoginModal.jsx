@@ -43,7 +43,12 @@ const LoginModal = ({
   };
 
   return (
-    <ModalLayout isOpen={true} width={width}>
+    <ModalLayout width={width} isModal={isModal}>
+      {isModal && (
+        <div className="hidden lg:block text-3xl font-bold mb-8">
+          Log in to continue
+        </div>
+      )}
       <form onSubmit={handleLogin}>
         <Input
           label={EmailIcon}
@@ -59,7 +64,7 @@ const LoginModal = ({
           setInputVal={setPassword}
           placeholder={"Password"}
         />
-        <div className="mb-6">
+        <div className="mb-6 md:flex md:gap-2">
           <p className="text-[#737373] font-medium">Don’t have an account?</p>
           {isModal ? (
             <p
@@ -77,7 +82,7 @@ const LoginModal = ({
             </Link>
           )}
         </div>
-        <Button text={"Log in"} isLoading={isLoading} />
+        <Button text={"Log in"} isLoading={isLoading} isModal={isModal} />
       </form>
     </ModalLayout>
   );

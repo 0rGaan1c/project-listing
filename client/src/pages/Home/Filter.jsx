@@ -24,9 +24,13 @@ const Filter = ({ categoryId, setCategoryId }) => {
   }, [isProductUpdated, setIsProductUpdated]);
 
   return (
-    <div className="mt-4">
-      <p className="text-[#8B8B8B]">Filters:</p>
-      <div className="flex flex-wrap gap-2 mt-2 text-sm">
+    <div className="mt-4 lg:-mt-16">
+      <p className="text-[#8B8B8B] lg:hidden">Filters:</p>
+      <div className="hidden lg:block text-white font-medium bg-[#36416A] rounded-xl pt-16 pb-4 px-6">
+        <p className="text-2xl">Feedback</p>
+        <p className="text-sm mt-2">Apply Filter</p>
+      </div>
+      <div className="flex flex-wrap gap-2 mt-2 text-sm lg:bg-white lg:p-3 lg:rounded-xl lg:shadow-categorybox">
         <div
           className={`${
             categoryId === ""

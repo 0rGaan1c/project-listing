@@ -19,7 +19,6 @@ const Home = () => {
     const fetchData = async () => {
       setLoading(true);
       const result = await getProducts(categoryId);
-      console.log(result);
       if (result.status === "ok") {
         setProducts(result.data);
         setLoading(false);
@@ -36,23 +35,57 @@ const Home = () => {
     fetchData();
   }, [categoryId, isProductUpdated, setIsProductUpdated]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!sortBy) return;
+
+    const fetchProductData = async () => {
+      const result = await getProducts(categoryId);
+
+      if (sortBy === "upvote") {
+        const sortedByUpvotes = [...result.data].sort(
+          (a, b) => b.upvotes.count - a.upvotes.count
+        );
+        setProducts(sortedByUpvotes);
+      } else if (sortBy === "comment") {
+        const sortedByComments = [...result.data].sort(
+          (a, b) => b.comments.length - a.comments.length
+        );
+        setProducts(sortedByComments);
+      }
+
+      setSortBy("");
+    };
+
+    fetchProductData();
+  }, [sortBy, categoryId]);
 
   return (
     <div>
       <Navbar />
       <div className="w-11/12 mx-auto">
         <Hero />
-        <MenuBox totalProducts={products.length} setSortBy={setSortBy} />
-        <div>
+        <div className="lg:grid lg:grid-cols-5">
+          <div className="lg:col-span-1"></div>
+          <div className="lg:col-span-4">
+            <MenuBox totalProducts={products.length} setSortBy={setSortBy} />
+          </div>
+        </div>
+        <div className="lg:grid lg:grid-cols-5 lg:gap-4">
           <Filter setCategoryId={setCategoryId} categoryId={categoryId} />
-          {loading ? (
-            <p className="my-6">Loading...</p>
-          ) : (
-            products.map((product) => {
-              return <Product product={product} key={product._id} />;
-            })
-          )}
+          <div className="lg:col-span-4">
+            {loading ? (
+              <p className="my-6">Loading...</p>
+            ) : products.length === 0 ? (
+              <p className="my-6">
+                No products found, you can add a product by clicking on the Add
+                Product button.
+              </p>
+            ) : (
+              products.map((product) => {
+                return <Product product={product} key={product._id} />;
+              })
+            )}
+          </div>
         </div>
       </div>
     </div>

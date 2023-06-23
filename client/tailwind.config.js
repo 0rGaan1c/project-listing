@@ -5,6 +5,7 @@ export default {
     extend: {
       boxShadow: {
         custom: "rgba(0, 0, 0, 0.25)",
+        categorybox: "0px 0px 17.50510597229004px 0px rgba(0, 0, 0, 0.15)",
       },
     },
     fontFamily: {

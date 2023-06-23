@@ -1,7 +1,6 @@
 const Category = require("../models/Category");
 const Product = require("../models/Product");
 const Upvote = require("../models/Upvote");
-const Comment = require("../models/Comment");
 
 const processCategories = async (categoryString) => {
   const categories = categoryString.split(",");
@@ -70,6 +69,12 @@ const createProduct = async (req, res) => {
       productLink,
       description,
     });
+    const upvote = await Upvote.create({
+      productId: result._id,
+      count: 0,
+    });
+    result.upvotes = upvote._id;
+    await result.save();
     res.send({ status: "ok", data: result });
   } catch (err) {
     console.log(err);

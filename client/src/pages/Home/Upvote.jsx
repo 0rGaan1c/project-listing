@@ -22,7 +22,7 @@ const Upvote = ({ productId, upvotes }) => {
 
   return (
     <div
-      className="bg-[#C7CBD6] w-[10%] h-14 rounded-full flex justify-evenly items-center flex-col cursor-pointer px-2"
+      className="bg-[#C7CBD6] w-[35px] h-14 rounded-full flex justify-evenly items-center flex-col cursor-pointer px-2"
       onClick={upvoteProduct}
     >
       {isUpvoting ? (

@@ -50,7 +50,12 @@ const SignupModal = ({
   };
 
   return (
-    <ModalLayout isOpen={true} onClose={null} width={width}>
+    <ModalLayout width={width} isModal={isModal}>
+      {isModal && (
+        <div className="hidden lg:block text-3xl font-bold mb-8">
+          Signup to continue
+        </div>
+      )}
       <form onSubmit={handleSignup}>
         <Input
           label={UserIcon}
@@ -80,7 +85,7 @@ const SignupModal = ({
           setInputVal={setPassword}
           placeholder={"Password"}
         />
-        <div className="mb-6">
+        <div className="mb-6 md:flex md:gap-2">
           <p className="text-[#737373] font-medium">Already have an account?</p>
           {isModal ? (
             <p
@@ -98,7 +103,7 @@ const SignupModal = ({
             </Link>
           )}
         </div>
-        <Button text={"Sign Up"} isLoading={isLoading} />
+        <Button text={"Sign Up"} isLoading={isLoading} isModal={isModal} />
       </form>
     </ModalLayout>
   );

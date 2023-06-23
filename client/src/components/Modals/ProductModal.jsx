@@ -96,7 +96,10 @@ const ProductModal = ({
   };
 
   return (
-    <ModalLayout isOpen={true} width={"w-11/12"}>
+    <ModalLayout width={"w-11/12"} isModal={true}>
+      <div className="hidden lg:block text-3xl font-bold mb-8">
+        {type === "add" ? "Add" : "Edit"} your product
+      </div>
       <form onSubmit={handleSubmit}>
         <Input
           placeholder="Name of the company"
@@ -135,6 +138,7 @@ const ProductModal = ({
         <Button
           text={type === "add" ? "+ Add" : " Edit"}
           isLoading={isLoading}
+          isModal={true}
         />
       </form>
     </ModalLayout>
