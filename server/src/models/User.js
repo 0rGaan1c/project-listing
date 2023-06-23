@@ -26,8 +26,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: [true, requiredErrorMessage("Mobile")],
-    // minlength: [10, minLengthErrorMessage(6, "Mobile")],
-    maxlength: [10, maxLengthErrorMessage(50, "Mobile")],
   },
   password: {
     type: String,

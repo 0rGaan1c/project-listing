@@ -31,7 +31,11 @@ const CommentSection = ({
     <>
       {isCommentOpen && (
         <div className="mt-6">
-          <div className="rounded-full bg-white relative p-2">
+          <div
+            className="rounded-full bg-white relative p-2
+          "
+            style={{ border: "2px solid #C7CBD6" }}
+          >
             <input
               type="text"
               placeholder="Add a comment..."

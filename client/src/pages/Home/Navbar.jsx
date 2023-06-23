@@ -37,7 +37,7 @@ const Navbar = () => {
 
               <Link
                 to="/signup"
-                className="rounded-md border-white border px-2 py-1"
+                className="rounded-md border-white border px-3 py-1"
               >
                 Sign up
               </Link>

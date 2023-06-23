@@ -2,11 +2,13 @@ const jwt = require("jsonwebtoken");
 
 const tokenValidator = async (req, res, next) => {
   const { token } = req.body;
-  console.log(req.body);
   if (token) {
     jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
       if (err) {
-        res.json({ status: "error", error: "Invalid Token" });
+        res.json({
+          status: "error",
+          error: "Invalid Token, Please login again.",
+        });
       } else {
         req.decoded = decoded;
         next();

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Upvote from "./Upvote";
 import Comment1 from "../../assets/comment1.svg";
@@ -35,6 +35,36 @@ const Product = ({ product }) => {
     }
   };
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest(".shadow-custom")) {
+        setIsProductModalOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsProductModalOpen(false);
+      }
+    };
+
+    if (isProductModalOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+      document.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "auto";
+    };
+  }, [isProductModalOpen]);
+
   return (
     <>
       {isProductModalOpen && (
@@ -53,7 +83,7 @@ const Product = ({ product }) => {
           className="bg-[#36416a26] my-3 p-3 rounded-md min-h-36 h-auto"
         >
           <div className="flex gap-2 justify-between w-full">
-            <div className="w-[20%] lg:w-fit lg:mr-4">
+            <div className="w-[20%] sm:w-fit sm:mr-4">
               <img
                 src={logoUrl}
                 alt={companyName}

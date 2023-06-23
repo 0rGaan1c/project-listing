@@ -4,10 +4,24 @@ import { validateToken } from "../api/auth";
 
 export const useAuth = () => {
   const [cookie] = useCookies(["access_token"]);
+  const [isTokenValid, setIsTokenValid] = useState(false);
+  const [checkingToken, setCheckingToken] = useState(true);
 
-  if (cookie.access_token) {
-    return true;
-  } else {
-    return false;
+  useEffect(() => {
+    const checkToken = async () => {
+      const res = await validateToken({ token: cookie.access_token });
+      if (res.status === "ok") {
+        setIsTokenValid(true);
+        setCheckingToken(false);
+      } else {
+        setCheckingToken(false);
+      }
+    };
+
+    checkToken();
+  }, [cookie.access_token]);
+
+  if (cookie.access_token && !checkingToken) {
+    return isTokenValid;
   }
 };

@@ -64,7 +64,7 @@ const LoginModal = ({
           setInputVal={setPassword}
           placeholder={"Password"}
         />
-        <div className="mb-6 md:flex md:gap-2">
+        <div className="mb-10 md:flex md:gap-2">
           <p className="text-[#737373] font-medium">Don’t have an account?</p>
           {isModal ? (
             <p

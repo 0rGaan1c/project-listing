@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import LoginModal from "../../components/Modals/LoginModal";
@@ -18,6 +18,40 @@ const MenuBox = ({ totalProducts, setSortBy }) => {
       setIsSignupModalOpen(true);
     }
   };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest(".shadow-custom")) {
+        setIsLoginModalOpen(false);
+        setIsSignupModalOpen(false);
+        setIsProductModalOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsLoginModalOpen(false);
+        setIsSignupModalOpen(false);
+        setIsProductModalOpen(false);
+      }
+    };
+
+    if (isLoginModalOpen || isSignupModalOpen || isProductModalOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+      document.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "auto";
+    };
+  }, [isLoginModalOpen, isSignupModalOpen, isProductModalOpen]);
 
   return (
     <>
@@ -51,20 +85,25 @@ const MenuBox = ({ totalProducts, setSortBy }) => {
       )}
       <div className="border-2 border-[#36416a59] rounded-md p-2 mt-8 flex justify-between text-sm items-center lg:py-3">
         <p className="font-bold lg:text-base">{totalProducts} Suggestions</p>
-        <select
-          className="text-[#8B8B8B] lg:text-base lg:font-bold lg:text-black"
-          onChange={(e) => {
-            setSortBy(e.target.value);
-          }}
-        >
-          <option value="">Sort By</option>
-          <option value="upvote" className="lg:text-black">
-            Upvote
-          </option>
-          <option value="comment" className="lg:text-black">
-            Comment
-          </option>
-        </select>
+        <div>
+          <p className="hidden lg:inline text-[#8B8B8B]">Sort by: </p>
+          <select
+            className="text-[#8B8B8B] lg:text-base lg:font-bold lg:text-black"
+            onChange={(e) => {
+              setSortBy(e.target.value);
+            }}
+          >
+            <option value="" selected disabled>
+              Select
+            </option>
+            <option value="upvote" className="lg:text-black">
+              Upvote
+            </option>
+            <option value="comment" className="lg:text-black">
+              Comment
+            </option>
+          </select>
+        </div>
         <button
           className="rounded-md bg-[#36416A] text-white py-1 px-3 lg:py-2 lg:px-4"
           onClick={handleClick}

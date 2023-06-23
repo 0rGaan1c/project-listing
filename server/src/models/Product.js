@@ -26,17 +26,6 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: [true, requiredErrorMessage("Description")],
   },
-  // upvotes: {
-  //   type: Number,
-  //   default: 0,
-  //   required: [true, requiredErrorMessage("Upvote Count")],
-  // },
-  // comments: [
-  //   {
-  //     type: String,
-  //     required: [true, requiredErrorMessage("Comment")],
-  //   },
-  // ],
   upvotes: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Upvote",
