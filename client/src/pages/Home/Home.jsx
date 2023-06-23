@@ -39,6 +39,7 @@ const Home = () => {
     if (!sortBy) return;
 
     const fetchProductData = async () => {
+      setLoading(true);
       const result = await getProducts(categoryId);
 
       if (sortBy === "upvote") {
@@ -46,14 +47,16 @@ const Home = () => {
           (a, b) => b.upvotes.count - a.upvotes.count
         );
         setProducts(sortedByUpvotes);
+        setLoading(false);
       } else if (sortBy === "comment") {
         const sortedByComments = [...result.data].sort(
           (a, b) => b.comments.length - a.comments.length
         );
         setProducts(sortedByComments);
+        setLoading(false);
       }
 
-      setSortBy("");
+      setLoading(false);
     };
 
     fetchProductData();
@@ -67,7 +70,11 @@ const Home = () => {
         <div className="lg:grid lg:grid-cols-5">
           <div className="lg:col-span-1"></div>
           <div className="lg:col-span-4">
-            <MenuBox totalProducts={products.length} setSortBy={setSortBy} />
+            <MenuBox
+              totalProducts={products.length}
+              setSortBy={setSortBy}
+              sortBy={sortBy}
+            />
           </div>
         </div>
         <div className="lg:grid lg:grid-cols-5 lg:gap-4">

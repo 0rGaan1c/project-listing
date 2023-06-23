@@ -9,7 +9,7 @@ const ModalLayout = ({ children, width, isModal }) => {
       <div
         className={`${width} bg-white rounded-lg px-6 pt-12 pb-8 shadow-custom md:px-10 md:pt-16 md:pb-12 md:rounded-2xl
         ${currentPath === "/" ? "lg:rounded-none" : ""}
-        lg:grid lg:grid-cols-5 ${isModal ? "lg:w-7/12 lg:p-0 lg:h-[75vh]" : ""}
+        lg:grid lg:grid-cols-5 ${isModal ? "lg:w-8/12 lg:p-0 lg:h-[75vh]" : ""}
         `}
       >
         <div

@@ -16,9 +16,9 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#36416A] text-white">
-      <div className="w-11/12 mx-auto flex justify-between py-3 items-center">
-        <p className="text-xl font-medium">Feedback</p>
-        <div className="flex gap-3 text-sm items-center">
+      <div className="w-11/12 mx-auto flex justify-between py-3 items-center lg:py-4">
+        <p className="text-xl font-medium lg:text-2xl">Feedback</p>
+        <div className="flex gap-3 text-sm items-center lg:text-base">
           {isLoggedIn ? (
             <>
               <button
@@ -29,6 +29,7 @@ const Navbar = () => {
               >
                 Log out
               </button>
+              <span className="hidden md:inline">Hello!</span>
               <img src={Avatar} alt="avatar" />
             </>
           ) : (

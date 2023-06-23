@@ -30,7 +30,7 @@ const Filter = ({ categoryId, setCategoryId }) => {
         <p className="text-2xl">Feedback</p>
         <p className="text-sm mt-2">Apply Filter</p>
       </div>
-      <div className="flex flex-wrap gap-2 mt-2 text-sm lg:bg-white lg:p-3 lg:rounded-xl lg:shadow-categorybox">
+      <div className="flex flex-wrap gap-2 mt-2 text-sm lg:bg-white lg:p-3 lg:rounded-xl lg:shadow-categorybox lg:mt-6">
         <div
           className={`${
             categoryId === ""

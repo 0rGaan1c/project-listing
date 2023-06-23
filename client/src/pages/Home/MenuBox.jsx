@@ -5,7 +5,7 @@ import LoginModal from "../../components/Modals/LoginModal";
 import SignupModal from "../../components/Modals/SignupModal";
 import ProductModal from "../../components/Modals/ProductModal";
 
-const MenuBox = ({ totalProducts, setSortBy }) => {
+const MenuBox = ({ totalProducts, setSortBy, sortBy }) => {
   const isLoggedIn = useAuth();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
@@ -83,7 +83,7 @@ const MenuBox = ({ totalProducts, setSortBy }) => {
           />
         </div>
       )}
-      <div className="border-2 border-[#36416a59] rounded-md p-2 mt-8 flex justify-between text-sm items-center lg:py-3">
+      <div className="border-2 border-[#36416a59] rounded-md p-2 mt-8 flex justify-between text-sm items-center lg:py-3 lg:px-4">
         <p className="font-bold lg:text-base">{totalProducts} Suggestions</p>
         <div>
           <p className="hidden lg:inline text-[#8B8B8B]">Sort by: </p>
@@ -92,10 +92,9 @@ const MenuBox = ({ totalProducts, setSortBy }) => {
             onChange={(e) => {
               setSortBy(e.target.value);
             }}
+            value={sortBy}
           >
-            <option value="" selected disabled>
-              Select
-            </option>
+            <option value="">Select</option>
             <option value="upvote" className="lg:text-black">
               Upvote
             </option>
@@ -105,7 +104,7 @@ const MenuBox = ({ totalProducts, setSortBy }) => {
           </select>
         </div>
         <button
-          className="rounded-md bg-[#36416A] text-white py-1 px-3 lg:py-2 lg:px-4"
+          className="rounded-md bg-[#36416A] text-white py-1 px-3 lg:py-2 lg:px-6"
           onClick={handleClick}
         >
           + Add product
