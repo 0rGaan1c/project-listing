@@ -123,6 +123,10 @@
   height: auto;
 }
 
+.product-loading {
+  margin: 1rem 0;
+}
+
 @media (min-width: 640px) {
   .product-img-div {
     width: fit-content;
