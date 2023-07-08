@@ -1,0 +1,21 @@
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.input-container input {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #aaa;
+  width: 83.333333%;
+  padding: 1px 0 3px 0.5rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  .input-container input {
+    width: 91.666667%;
+  }
+}

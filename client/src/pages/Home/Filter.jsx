@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { getCategories } from "../../api/product";
 import { toast } from "react-hot-toast";
 import { ProductContext } from "../../contexts/ProductContext";
+import "../../styles/pages/Home/Filter.css";
 
 const Filter = ({ categoryId, setCategoryId }) => {
   const [categories, setCategories] = useState([]);
@@ -24,19 +25,17 @@ const Filter = ({ categoryId, setCategoryId }) => {
   }, [isProductUpdated, setIsProductUpdated]);
 
   return (
-    <div className="mt-4 lg:-mt-16">
-      <p className="text-[#8B8B8B] lg:hidden">Filters:</p>
-      <div className="hidden lg:block text-white font-medium bg-[#36416A] rounded-xl pt-16 pb-4 px-6">
-        <p className="text-2xl">Feedback</p>
-        <p className="text-sm mt-2">Apply Filter</p>
+    <div className="filter-container">
+      <p className="filter-text">Filters:</p>
+      <div className="filter-box-lg">
+        <p className="feedback">Feedback</p>
+        <p className="apply-filter">Apply Filter</p>
       </div>
-      <div className="flex flex-wrap gap-2 mt-2 text-sm lg:bg-white lg:p-3 lg:rounded-xl lg:shadow-categorybox lg:mt-6">
+      <div className="categories-container">
         <div
-          className={`${
-            categoryId === ""
-              ? "bg-[#36416a] text-white"
-              : "bg-[#36416a26] text-black"
-          } w-fit h-fit py-2 px-6 flex rounded-full justify-center cursor-pointer`}
+          className={`category ${
+            categoryId === "" ? "cat-active" : "cat-not-active"
+          }`}
           onClick={() => {
             setCategoryId("");
           }}
@@ -46,11 +45,9 @@ const Filter = ({ categoryId, setCategoryId }) => {
         {categories.map(({ category, _id }) => {
           return (
             <div
-              className={`${
-                categoryId === _id
-                  ? "bg-[#36416a] text-white"
-                  : "bg-[#36416a26] text-black"
-              } w-fit h-fit py-2 px-6 flex rounded-full justify-center cursor-pointer`}
+              className={`category ${
+                categoryId === _id ? "cat-active" : "cat-not-active"
+              }`}
               key={_id}
               onClick={() => {
                 setCategoryId(_id);

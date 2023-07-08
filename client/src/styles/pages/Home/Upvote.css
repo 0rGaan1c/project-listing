@@ -1,0 +1,17 @@
+.upvote {
+  background-color: #c7cbd6;
+  width: 35px;
+  height: 3.5rem;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.total-upvotes {
+  font-size: 0.875rem;
+  font-weight: 500;
+}

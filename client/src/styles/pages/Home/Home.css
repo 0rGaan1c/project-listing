@@ -1,0 +1,33 @@
+.home {
+  width: 91.666667%;
+  margin: auto;
+}
+
+@media (min-width: 1024px) {
+  .menu-box-container {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .menu-box-container .one {
+    grid-column: span 1 / span 1;
+  }
+
+  .menu-box-container .two {
+    grid-column: span 4 / span 4;
+  }
+
+  .filter-product-container {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .products-container {
+    grid-column: span 4 / span 4;
+  }
+
+  .product-loading {
+    margin: 1.5rem 0;
+  }
+}

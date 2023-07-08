@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import LoginModal from "../../components/Modals/LoginModal";
 import SignupModal from "../../components/Modals/SignupModal";
 import ProductModal from "../../components/Modals/ProductModal";
+import "../../styles/pages/Home/MenuBox.css";
 
 const MenuBox = ({ totalProducts, setSortBy, sortBy }) => {
   const isLoggedIn = useAuth();
@@ -21,7 +22,7 @@ const MenuBox = ({ totalProducts, setSortBy, sortBy }) => {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (!event.target.closest(".shadow-custom")) {
+      if (!event.target.closest(".modal-layout")) {
         setIsLoginModalOpen(false);
         setIsSignupModalOpen(false);
         setIsProductModalOpen(false);
@@ -66,7 +67,7 @@ const MenuBox = ({ totalProducts, setSortBy, sortBy }) => {
       {isSignupModalOpen && (
         <div className="blackScreen-overlay">
           <SignupModal
-            width={"w-11/12"}
+            width={"91.666667%"}
             isModal={true}
             setIsLoginModalOpen={setIsLoginModalOpen}
             setIsSignupModalOpen={setIsSignupModalOpen}
@@ -76,37 +77,33 @@ const MenuBox = ({ totalProducts, setSortBy, sortBy }) => {
       {isLoginModalOpen && (
         <div className="blackScreen-overlay">
           <LoginModal
-            width={"w-11/12"}
+            width={"91.666667%"}
             isModal={true}
             setIsSignupModalOpen={setIsSignupModalOpen}
             setIsLoginModalOpen={setIsLoginModalOpen}
           />
         </div>
       )}
-      <div className="border-2 border-[#36416a59] rounded-md p-2 mt-8 flex justify-between text-sm items-center lg:py-3 lg:px-4">
-        <p className="font-bold lg:text-base">{totalProducts} Suggestions</p>
-        <div>
-          <p className="hidden lg:inline text-[#8B8B8B]">Sort by: </p>
+      <div className="menu-box">
+        <p className="suggestion">{totalProducts} Suggestions</p>
+        <div className="sort">
+          <p>Sort by: </p>
           <select
-            className="text-[#8B8B8B] lg:text-base lg:font-bold lg:text-black"
             onChange={(e) => {
               setSortBy(e.target.value);
             }}
             value={sortBy}
           >
             <option value="">Select</option>
-            <option value="upvote" className="lg:text-black">
+            <option value="upvote" className="option">
               Upvote
             </option>
-            <option value="comment" className="lg:text-black">
+            <option value="comment" className="option">
               Comment
             </option>
           </select>
         </div>
-        <button
-          className="rounded-md bg-[#36416A] text-white py-1 px-3 lg:py-2 lg:px-6"
-          onClick={handleClick}
-        >
+        <button className="add-prod-btn" onClick={handleClick}>
           + Add product
         </button>
       </div>

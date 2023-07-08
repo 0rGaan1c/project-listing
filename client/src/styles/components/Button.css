@@ -1,0 +1,39 @@
+.submit-btn {
+  color: white;
+  background-color: var(--bg-color);
+  border-radius: 9999px;
+  width: 83.333333%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  padding: 0.35rem 0.5rem;
+  font-size: 1rem;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .submit-btn {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .submit-btn {
+    margin-top: 2.5rem;
+  }
+
+  .btn-is-modal {
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  .btn-no-modal {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}

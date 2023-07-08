@@ -1,14 +1,15 @@
 import Loader from "../assets/loader.svg";
+import "../styles/components/Button.css";
 
 const Button = ({ text, isLoading, isModal }) => {
   return (
     <button
-      className={`text-white bg-[#36416A] rounded-full w-10/12 flex justify-center mx-auto text-center p-2 py-1 cursor-pointer md:w-3/12 
-      ${isModal ? "lg:mr-auto lg:ml-0" : "lg:ml-auto lg:mr-0"} lg:mt-10`}
+      className={`submit-btn
+      ${isModal ? "btn-is-modal" : "btn-no-modal"}`}
       disabled={isLoading ? true : false}
     >
       {isLoading ? (
-        <div className="flex justify-center">
+        <div className="loading">
           <img src={Loader} alt="" width={25} height={25} />
         </div>
       ) : (

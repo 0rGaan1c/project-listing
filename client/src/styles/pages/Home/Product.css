@@ -1,0 +1,166 @@
+.product-container {
+  margin: 1.5rem 0;
+}
+
+.product {
+  background-color: #36416a26;
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  min-height: 8rem;
+  height: auto;
+}
+
+.product-content {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product-img-div {
+  width: 20%;
+}
+
+.product-img-div > img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 9999px;
+}
+
+.product-info {
+  width: 100%;
+}
+
+.product-info-basic {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-info-basic div a {
+  color: #36416a;
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.product-info-basic div p {
+  font-size: 0.875rem;
+}
+
+.product-info-advanced {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.product-info-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  width: 70%;
+}
+
+.product-info-category {
+  background-color: #c0ceff;
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.3rem 1rem;
+  display: flex;
+  border-radius: 9999px;
+  justify-content: center;
+}
+
+.product-info-commenticon {
+  cursor: pointer;
+}
+
+.product-info-commenticon.w-10 {
+  width: 10%;
+}
+
+.product-info-commenticon.w-30 {
+  width: 30%;
+}
+
+.comment-icon-container1 p {
+  display: none;
+}
+
+.product-edit {
+  display: flex;
+}
+
+.edit-product-btn {
+  background-color: var(--bg-color);
+  color: white;
+  border-radius: 9999px;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.25rem 0.75rem;
+}
+
+.comment-icon-container2 {
+  width: 3.5rem;
+  display: flex;
+  gap: 0.25rem;
+  cursor: pointer;
+  justify-content: end;
+  align-items: center;
+}
+
+.comment-icon-container2 span {
+  font-weight: 500;
+}
+
+.comment-icon-container2 img {
+  width: 18px;
+  height: auto;
+}
+
+@media (min-width: 640px) {
+  .product-img-div {
+    width: fit-content;
+    margin-right: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-img-div > img {
+    width: 5.375rem;
+    height: 5.375rem;
+  }
+
+  .product-info-advanced {
+    justify-content: start;
+  }
+
+  .product-info-categories {
+    width: 35%;
+  }
+
+  .comment-icon-container1 {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #ababab;
+  }
+
+  .comment-icon-container1 p {
+    display: inline;
+  }
+
+  .product-edit {
+    margin-left: auto;
+    gap: 2rem;
+  }
+
+  .edit-product-btn {
+    padding: 0.25rem 1.25rem;
+  }
+}

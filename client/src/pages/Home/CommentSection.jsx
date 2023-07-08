@@ -3,6 +3,7 @@ import SubmitArrow from "../../assets/submitarrow.svg";
 import { createComment } from "../../api/comments";
 import { toast } from "react-hot-toast";
 import Circle from "../../assets/circle.svg";
+import "../../styles/pages/Home/CommentSection.css";
 
 const CommentSection = ({
   isCommentOpen,
@@ -30,38 +31,25 @@ const CommentSection = ({
   return (
     <>
       {isCommentOpen && (
-        <div className="mt-6">
-          <div
-            className="rounded-full bg-white relative p-2
-          "
-            style={{ border: "2px solid #C7CBD6" }}
-          >
+        <div className="comment">
+          <div className="comment-input">
             <input
               type="text"
               placeholder="Add a comment..."
-              className="outline-none placeholder-[#ABABAB] text-sm pl-2 w-[90%]"
               onChange={(e) => {
                 setCommentVal(e.target.value);
               }}
               value={commentVal}
             />
-            <img
-              src={SubmitArrow}
-              alt=""
-              className="absolute right-3 top-3 cursor-pointer"
-              onClick={handleComment}
-            />
+            <img src={SubmitArrow} alt="" onClick={handleComment} />
           </div>
 
-          <div className="mt-4 max-h-56 overflow-y-auto">
+          <div className="comment-list">
             {commentList.map(({ commentText, _id }) => {
               return (
-                <div
-                  key={_id}
-                  className="flex gap-2 mb-4 items-baseline w-[96%]"
-                >
+                <div key={_id} className="single-comment">
                   <img src={Circle} alt="" />
-                  <p className="font-sm text-[#999999]">{commentText}</p>
+                  <p>{commentText}</p>
                 </div>
               );
             })}

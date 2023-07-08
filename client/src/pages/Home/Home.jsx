@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import Filter from "./Filter";
 import Product from "./Product";
 import { ProductContext } from "../../contexts/ProductContext";
+import "../../styles/pages/Home/Home.css";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -65,11 +66,11 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="w-11/12 mx-auto">
+      <div className="home">
         <Hero />
-        <div className="lg:grid lg:grid-cols-5">
-          <div className="lg:col-span-1"></div>
-          <div className="lg:col-span-4">
+        <div className="menu-box-container">
+          <div className="one"></div>
+          <div className="two">
             <MenuBox
               totalProducts={products.length}
               setSortBy={setSortBy}
@@ -77,13 +78,13 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className="lg:grid lg:grid-cols-5 lg:gap-4">
+        <div className="filter-product-container">
           <Filter setCategoryId={setCategoryId} categoryId={categoryId} />
-          <div className="lg:col-span-4">
+          <div className="products-container">
             {loading ? (
-              <p className="my-6">Loading...</p>
+              <p className="product-loading">Loading...</p>
             ) : products.length === 0 ? (
-              <p className="my-6">
+              <p className="product-loading">
                 No products found, you can add a product by clicking on the Add
                 Product button.
               </p>

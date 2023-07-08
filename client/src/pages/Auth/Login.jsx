@@ -1,11 +1,11 @@
-import AuthLayout from "../../Layout/AuthLayout";
+import AuthLayout from "../../layouts/AuthLayout";
 
 import LoginModal from "../../components/Modals/LoginModal";
 
 const Login = () => {
   return (
     <AuthLayout>
-      <LoginModal width={"w-full"} isModal={false} />
+      <LoginModal width={"100%"} isModal={false} />
     </AuthLayout>
   );
 };

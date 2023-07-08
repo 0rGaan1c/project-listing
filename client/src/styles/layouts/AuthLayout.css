@@ -1,0 +1,51 @@
+.auth-layout {
+  height: 100vh;
+  background-color: var(--bg-color);
+  padding-top: 5rem;
+}
+
+.auth-layout-container {
+  width: 83.333333%;
+  margin: auto;
+}
+
+.auth-layout-header {
+  color: white;
+  margin-bottom: 2.5rem;
+}
+
+.auth-layout-header h1 {
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .auth-layout {
+    padding-top: 6rem;
+  }
+
+  .auth-layout-container {
+    width: 58.333333%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .auth-layout-container {
+    width: 50%;
+  }
+
+  .auth-layout-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .auth-layout-header h1 {
+    font-size: 3rem;
+    font-weight: 500;
+  }
+}
+
+@media (min-width: 1280px) {
+  .auth-layout-container {
+    width: 41.666667%;
+  }
+}

@@ -8,7 +8,8 @@ import { signup } from "../../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import { toast } from "react-hot-toast";
-import ModalLayout from "../../Layout/ModalLayout";
+import ModalLayout from "../../layouts/ModalLayout";
+import "../../styles/components/Modals/SignupModal.css";
 
 const SignupModal = ({
   width,
@@ -51,11 +52,7 @@ const SignupModal = ({
 
   return (
     <ModalLayout width={width} isModal={isModal}>
-      {isModal && (
-        <div className="hidden lg:block text-3xl font-bold mb-8">
-          Signup to continue
-        </div>
-      )}
+      {isModal && <div className="signup-continue">Signup to continue</div>}
       <form onSubmit={handleSignup}>
         <Input
           label={UserIcon}
@@ -85,11 +82,11 @@ const SignupModal = ({
           setInputVal={setPassword}
           placeholder={"Password"}
         />
-        <div className="mb-6 md:flex md:gap-2">
-          <p className="text-[#737373] font-medium">Already have an account?</p>
+        <div className="signup-no-account-container">
+          <p className="account-text">Already have an account?</p>
           {isModal ? (
             <p
-              className="text-[#36416A] underline cursor-pointer"
+              className="login-text"
               onClick={() => {
                 setIsSignupModalOpen(false);
                 setIsLoginModalOpen(true);
@@ -98,7 +95,7 @@ const SignupModal = ({
               Log in
             </p>
           ) : (
-            <Link to="/login" className="text-[#36416A] underline">
+            <Link to="/login" className="login-text">
               Log in
             </Link>
           )}

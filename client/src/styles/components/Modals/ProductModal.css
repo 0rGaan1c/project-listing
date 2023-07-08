@@ -1,0 +1,13 @@
+.add-product-text {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .add-product-text {
+    display: block;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+}

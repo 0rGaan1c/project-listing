@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import UpvoteIcon from "../../assets/upvote.svg";
 import { toast } from "react-hot-toast";
 import { updateUpvote } from "../../api/upvotes";
+import "../../styles/pages/Home/Upvote.css";
 
 const Upvote = ({ productId, upvotes }) => {
   const [totalUpvotes, setTotalUpvotes] = useState(upvotes?.count || 0);
@@ -21,16 +22,13 @@ const Upvote = ({ productId, upvotes }) => {
   };
 
   return (
-    <div
-      className="bg-[#C7CBD6] w-[35px] h-14 rounded-full flex justify-evenly items-center flex-col cursor-pointer px-2"
-      onClick={upvoteProduct}
-    >
+    <div className="upvote" onClick={upvoteProduct}>
       {isUpvoting ? (
         <p>...</p>
       ) : (
         <>
           <img src={UpvoteIcon} alt="" />
-          <p className="text-sm font-medium">{totalUpvotes}</p>
+          <p className="total-upvotes">{totalUpvotes}</p>
         </>
       )}
     </div>

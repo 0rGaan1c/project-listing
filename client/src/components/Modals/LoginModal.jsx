@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import EmailIcon from "../../assets/mail.svg";
 import PasswordIcon from "../../assets/password.svg";
-import ModalLayout from "../../Layout/ModalLayout";
+import ModalLayout from "../../layouts/ModalLayout";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../api/auth";
 import { toast } from "react-hot-toast";
 import Input from "../Input";
 import Button from "../Button";
+import "../../styles/components/Modals/LoginModal.css";
 
 const LoginModal = ({
   width,
@@ -44,11 +45,7 @@ const LoginModal = ({
 
   return (
     <ModalLayout width={width} isModal={isModal}>
-      {isModal && (
-        <div className="hidden lg:block text-3xl font-bold mb-8">
-          Log in to continue
-        </div>
-      )}
+      {isModal && <div className="login-continue">Log in to continue</div>}
       <form onSubmit={handleLogin}>
         <Input
           label={EmailIcon}
@@ -64,11 +61,11 @@ const LoginModal = ({
           setInputVal={setPassword}
           placeholder={"Password"}
         />
-        <div className="mb-10 md:flex md:gap-2">
-          <p className="text-[#737373] font-medium">Don’t have an account?</p>
+        <div className="login-no-account-container">
+          <p className="no-account-text">Don’t have an account?</p>
           {isModal ? (
             <p
-              className="text-[#36416A] underline cursor-pointer"
+              className="signup-text"
               onClick={() => {
                 setIsLoginModalOpen(false);
                 setIsSignupModalOpen(true);
@@ -77,7 +74,7 @@ const LoginModal = ({
               Sign up
             </p>
           ) : (
-            <Link to="/signup" className="text-[#36416A] underline">
+            <Link to="/signup" className="signup-text">
               Sign up
             </Link>
           )}

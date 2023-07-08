@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import ModalLayout from "../../Layout/ModalLayout";
+import ModalLayout from "../../layouts/ModalLayout";
 import Input from "../Input";
 import Button from "../Button";
 import { toast } from "react-hot-toast";
 import { createProduct, updateProduct } from "../../api/product";
 import { useCookies } from "react-cookie";
 import { ProductContext } from "../../contexts/ProductContext";
+import "../../styles/components/Modals/ProductModal.css";
 
 const processCategories = (categories) => {
   let cateogryString = "";
@@ -96,8 +97,8 @@ const ProductModal = ({
   };
 
   return (
-    <ModalLayout width={"w-11/12"} isModal={true}>
-      <div className="hidden lg:block text-3xl font-bold mb-8">
+    <ModalLayout width={"91.666667%"} isModal={true}>
+      <div className="add-product-text">
         {type === "add" ? "Add" : "Edit"} your product
       </div>
       <form onSubmit={handleSubmit}>

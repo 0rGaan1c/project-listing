@@ -1,0 +1,36 @@
+.signup-continue {
+  display: none;
+}
+
+.signup-no-account-container {
+  margin-bottom: 1.5rem;
+}
+
+.account-text {
+  color: #737373;
+  font-weight: 500;
+}
+
+.login-text {
+  color: #36416a;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .signup-no-account-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .signup-continue {
+    display: block;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+}

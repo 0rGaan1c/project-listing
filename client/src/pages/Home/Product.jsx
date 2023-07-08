@@ -8,6 +8,7 @@ import { getComments } from "../../api/comments";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../../hooks/useAuth";
 import ProductModal from "../../components/Modals/ProductModal";
+import "../../styles/pages/Home/Product.css";
 
 const Product = ({ product }) => {
   const {
@@ -37,7 +38,7 @@ const Product = ({ product }) => {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (!event.target.closest(".shadow-custom")) {
+      if (!event.target.closest(".modal-layout")) {
         setIsProductModalOpen(false);
       }
     };
@@ -77,62 +78,47 @@ const Product = ({ product }) => {
           />
         </div>
       )}
-      <div className="my-6">
-        <div
-          key={_id}
-          className="bg-[#36416a26] my-3 p-3 rounded-md min-h-36 h-auto"
-        >
-          <div className="flex gap-2 justify-between w-full">
-            <div className="w-[20%] sm:w-fit sm:mr-4">
-              <img
-                src={logoUrl}
-                alt={companyName}
-                className="w-12 h-12 object-cover rounded-full lg:w-[86px] lg:h-[76px]"
-              />
+      <div className="product-container">
+        <div key={_id} className="product">
+          <div className="product-content">
+            <div className="product-img-div">
+              <img src={logoUrl} alt={companyName} />
             </div>
-            <div className="w-[100%]">
-              <div className="flex gap-2 justify-between">
-                <div className="">
-                  <Link
-                    to={productLink}
-                    className="text-[#36416A] font-medium text-lg"
-                  >
-                    {companyName}
-                  </Link>
-                  <p className="text-sm">{description}</p>
+            <div className="product-info">
+              <div className="product-info-basic">
+                <div>
+                  <Link to={productLink}>{companyName}</Link>
+                  <p>{description}</p>
                 </div>
                 <Upvote productId={_id} upvotes={upvotes} />
               </div>
-              <div className="mt-2 flex gap-2 justify-between items-center text-sm lg:justify-start">
-                <div className="flex flex-wrap gap-1 w-[70%] lg:w-[35%]">
+              <div className="product-info-advanced">
+                <div className="product-info-categories">
                   {categories.map(({ category, _id }) => {
                     return (
-                      <div
-                        className="bg-[#C0CEFF] text-black w-fit h-fit py-1 px-4 flex rounded-full justify-center cursor-pointer"
-                        key={_id}
-                      >
+                      <div className="product-info-category" key={_id}>
                         {category}
                       </div>
                     );
                   })}
                 </div>
                 <div
-                  className={`${
-                    isLoggedIn ? "w-[10%]" : "w-[30%]"
+                  className={`product-info-commenticon ${
+                    isLoggedIn ? "w-10" : "w-30"
                   } cursor-pointer`}
                   onClick={() => {
                     setIsCommentOpen(!isCommentOpen);
                   }}
                 >
-                  <div className="lg:flex lg:items-center lg:gap-1 lg:text-[#ABABAB]">
+                  <div className="comment-icon-container1">
                     <img src={Comment1} alt="" />
-                    <p className="hidden lg:inline">Comment</p>
+                    <p>Comment</p>
                   </div>
                 </div>
-                <div className="flex lg:ml-auto lg:gap-8">
+                <div className="product-edit">
                   {isLoggedIn && (
                     <button
-                      className="bg-[#36416A] text-white rounded-full w-fit h-fit px-3 py-1 lg:px-5"
+                      className="edit-product-btn"
                       onClick={() => {
                         setIsProductModalOpen(true);
                       }}
@@ -141,12 +127,12 @@ const Product = ({ product }) => {
                     </button>
                   )}
                   <div
-                    className="w-14 flex gap-1 items-center cursor-pointer justify-end"
+                    className="comment-icon-container2"
                     onClick={() => {
                       setIsCommentOpen(!isCommentOpen);
                     }}
                   >
-                    <span className="font-medium">{commentList.length}</span>
+                    <span>{commentList.length}</span>
                     <img src={Comment2} alt="" className="" />
                   </div>
                 </div>

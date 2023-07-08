@@ -1,0 +1,45 @@
+.comment {
+  margin-top: 1.5rem;
+}
+
+.comment-input {
+  border-radius: 9999px;
+  background-color: white;
+  position: relative;
+  padding: 0.5rem;
+  border: 2px solid #c7cbd6;
+}
+
+.comment-input input {
+  outline: none;
+  border: none;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  width: 90%;
+}
+
+.comment-input img {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  cursor: pointer;
+}
+
+.comment-list {
+  margin-top: 1rem;
+  max-height: 14rem;
+  overflow-y: auto;
+}
+
+.single-comment {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: baseline;
+  width: 96%;
+}
+
+.single-comment p {
+  font-size: 0.875rem;
+  color: #999999;
+}
