@@ -12,12 +12,15 @@ const categoryRouter = require("./routes/category");
 const app = express();
 app.use(cors());
 
+//check
 app.use(bodyParser.json());
 app.use("/api", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/upvote", upvoteRouter);
 app.use("/api/comment", commentRouter);
 app.use("/api/category", categoryRouter);
+
+//library and framework
 
 // Start the server
 const port = process.env.PORT || 3001;

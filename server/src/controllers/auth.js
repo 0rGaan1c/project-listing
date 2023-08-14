@@ -35,7 +35,7 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await User.findOne({ email }).lean();
+  const user = await User.findOne({ email }).lean(); // check
 
   if (!user) {
     return res.json({ status: "error", error: `email/password is invalid.` });
